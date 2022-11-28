@@ -1,5 +1,4 @@
 import { getMovies } from '../app/movies/data'
-import { MovieList } from '../types'
 import { globalDelayMs } from '../utils'
 import Movies from './Movies'
 

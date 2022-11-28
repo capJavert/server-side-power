@@ -9,6 +9,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MovieRead | { m
         {
             name: 'i',
             value: req.query.id
+        },
+        {
+            name: 'plot',
+            value: req.query.plot || 'full'
         }
     ]
     params.forEach(param => {
@@ -50,9 +54,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MovieRead | { m
         return
     }
 
-    const result = resultOrError as MovieRead
+    const { Response, ...result } = resultOrError
 
-    res.status(200).json(result)
+    res.status(200).json(result as MovieRead)
 }
 
 export default handler

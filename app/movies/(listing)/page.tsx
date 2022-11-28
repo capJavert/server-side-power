@@ -1,6 +1,6 @@
-import Movies from '../../components/Movies'
-import { globalDelayMs } from '../../utils'
-import { getMovies } from './data'
+import Movies from '../../../components/Movies'
+import { globalDelayMs } from '../../../utils'
+import { getMovies } from '../data'
 
 const Page = async ({ searchParams }: { searchParams?: { q: string } }) => {
     const { q } = searchParams || {}

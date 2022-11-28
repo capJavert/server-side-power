@@ -1,6 +1,6 @@
-import AsyncMovies from '../../../components/AsyncMovies'
-import Movies from '../../../components/Movies'
-import { getMovies } from '../data'
+import AsyncMovies from '../../../../components/AsyncMovies'
+import Movies from '../../../../components/Movies'
+import { getMovies } from '../../data'
 
 const Page = async ({ searchParams }: { searchParams?: { q: string } }) => {
     const { q } = searchParams || {}

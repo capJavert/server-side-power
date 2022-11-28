@@ -1,9 +1,9 @@
 import { Suspense } from 'react'
 
-import AsyncMovies from '../../../components/AsyncMovies'
-import FallbackMovies from '../../../components/FallbackMovies'
-import Movies from '../../../components/Movies'
-import { getMovies } from '../data'
+import AsyncMovies from '../../../../components/AsyncMovies'
+import FallbackMovies from '../../../../components/FallbackMovies'
+import Movies from '../../../../components/Movies'
+import { getMovies } from '../../data'
 
 const Page = async ({ searchParams }: { searchParams?: { q: string } }) => {
     const { q } = searchParams || {}
