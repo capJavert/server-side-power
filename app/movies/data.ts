@@ -1,6 +1,8 @@
 import { MovieList, MovieRead } from '../../types'
 import { delay } from '../../utils'
 
+const apiUrl = `${process.env.VERCEL_URL?.includes('localhost') ? 'http://' : 'https://'}${process.env.VERCEL_URL}/api`
+
 export const getMovies = async (params: {
     search?: string
     year?: string
@@ -27,7 +29,7 @@ export const getMovies = async (params: {
         await delay(params.delayMs)
     }
 
-    const response = await fetch(`${process.env.VERCEL_URL}/api/movies?${searchParams.toString()}`, {
+    const response = await fetch(`${apiUrl}/movies?${searchParams.toString()}`, {
         headers: {
             Authorization: `Bearer ${process.env.API_SECRET}`
         }
@@ -59,7 +61,7 @@ export const getMovie = async (params: { id: string; delayMs?: number }): Promis
         await delay(params.delayMs)
     }
 
-    const response = await fetch(`${process.env.VERCEL_URL}/api/movies/${searchParams.get('id')}`, {
+    const response = await fetch(`${apiUrl}/movies/${searchParams.get('id')}`, {
         headers: {
             Authorization: `Bearer ${process.env.API_SECRET}`
         }
