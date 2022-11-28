@@ -25,7 +25,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
             <h2>Related movies</h2>
 
-            <Suspense fallback={<FallbackMovies count={8} />}>
+            <Suspense fallback={<FallbackMovies count={4} />}>
                 {/* @ts-expect-error Server Component */}
                 <AsyncMovies.Promise promise={relatedMovies} />
             </Suspense>
