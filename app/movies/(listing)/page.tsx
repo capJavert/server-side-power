@@ -1,24 +1,29 @@
+import { Suspense } from 'react'
+
+import AsyncMovies from '../../../components/AsyncMovies'
+import FallbackMovies from '../../../components/FallbackMovies'
 import Movies from '../../../components/Movies'
-import { globalDelayMs } from '../../../utils'
 import { getMovies } from '../data'
 
 const Page = async ({ searchParams }: { searchParams?: { q: string } }) => {
     const { q } = searchParams || {}
-    const [{ data: movies }, { data: avengerMovies }, { data: fastMovies }] = await Promise.all([
-        getMovies({ search: q as string }),
-        getMovies({ search: 'Avengers', delayMs: globalDelayMs }),
-        getMovies({ search: 'Fast+and+Furious', delayMs: globalDelayMs })
-    ])
+    const { data: movies } = await getMovies({ search: q })
 
     return (
         <>
             <Movies items={movies} />
 
             <h2>Avengers</h2>
-            <Movies items={avengerMovies} />
+            <Suspense fallback={<FallbackMovies count={12} />}>
+                {/* @ts-expect-error Server Component */}
+                <AsyncMovies search="Avengers" />
+            </Suspense>
 
             <h2>Fast Saga</h2>
-            <Movies items={fastMovies} />
+            <Suspense fallback={<FallbackMovies count={12} />}>
+                {/* @ts-expect-error Server Component */}
+                <AsyncMovies search="Fast+and+Furious" />
+            </Suspense>
         </>
     )
 }

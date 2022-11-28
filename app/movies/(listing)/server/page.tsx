@@ -1,7 +1,4 @@
-import { Suspense } from 'react'
-
 import AsyncMovies from '../../../../components/AsyncMovies'
-import FallbackMovies from '../../../../components/FallbackMovies'
 import Movies from '../../../../components/Movies'
 import { getMovies } from '../../data'
 
@@ -14,16 +11,12 @@ const Page = async ({ searchParams }: { searchParams?: { q: string } }) => {
             <Movies items={movies} />
 
             <h2>Avengers</h2>
-            <Suspense fallback={<FallbackMovies count={12} />}>
-                {/* @ts-expect-error Server Component */}
-                <AsyncMovies search="Avengers" />
-            </Suspense>
+            {/* @ts-expect-error Server Component */}
+            <AsyncMovies search="Avengers" />
 
             <h2>Fast Saga</h2>
-            <Suspense fallback={<FallbackMovies count={12} />}>
-                {/* @ts-expect-error Server Component */}
-                <AsyncMovies search="Fast+and+Furious" />
-            </Suspense>
+            {/* @ts-expect-error Server Component */}
+            <AsyncMovies search="Fast+and+Furious" />
         </>
     )
 }
