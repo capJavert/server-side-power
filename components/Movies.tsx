@@ -5,10 +5,6 @@ import { blurDataUrl } from '../utils'
 import BodyChunk from './BodyChunk'
 
 const Movies = ({ items }: { items: MovieList[] }) => {
-    if (!items.length) {
-        return <div>No results</div>
-    }
-
     return (
         <section
             style={{

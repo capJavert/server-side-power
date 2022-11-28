@@ -3,12 +3,15 @@ import { GetServerSideProps } from 'next'
 import { getMovies } from '../../../app/movies/data'
 import Movies from '../../../components/Movies'
 import { MovieList } from '../../../types'
+import { globalDelayMs } from '../../../utils'
 
 export type Props = { movies: MovieList[]; avengerMovies: MovieList[]; fastMovies: MovieList[] }
 
 const Page = ({ movies, avengerMovies, fastMovies }: Props) => {
     return (
         <>
+            <h1>Movies</h1>
+
             <Movies items={movies} />
 
             <h2>Avengers</h2>
@@ -24,8 +27,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
     const { q } = context.query
     const [{ data: movies }, { data: avengerMovies }, { data: fastMovies }] = await Promise.all([
         getMovies({ search: q as string }),
-        getMovies({ search: 'Avengers', delayMs: 5000 }),
-        getMovies({ search: 'Fast+and+Furious', delayMs: 5000 })
+        getMovies({ search: 'Avengers', delayMs: globalDelayMs }),
+        getMovies({ search: 'Fast+and+Furious', delayMs: globalDelayMs })
     ])
 
     return {
