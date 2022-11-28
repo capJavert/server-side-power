@@ -1,7 +1,6 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { MovieList, MovieRead } from '../../../types'
+import { MovieRead } from '../../../types'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<MovieRead | { message: string }>) => {
     const searchParams = new URLSearchParams()
