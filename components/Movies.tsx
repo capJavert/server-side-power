@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { CSSProperties } from 'react'
 
 import { MovieList } from '../types'
@@ -26,24 +27,28 @@ const Movies = ({ items }: { items: MovieList[] }) => {
     return (
         <section style={styles.container}>
             {items.map(movie => (
-                <article key={movie.imdbID} style={styles.article}>
-                    {movie.Poster.startsWith('https://') ? (
-                        <Image
-                            alt={movie.Title}
-                            src={movie.Poster}
-                            width={300}
-                            height={448}
-                            placeholder="blur"
-                            blurDataURL={blurDataUrl}
-                        />
-                    ) : (
-                        <Image alt="Placeholder" src={blurDataUrl} width={300} height={448} />
-                    )}
-                    <h3 style={styles.title}>
-                        {movie.Title} ({movie.Year})
-                    </h3>
-                    <BodyChunk />
-                </article>
+                <Link key={movie.imdbID} href={`/movies/${movie.imdbID}`}>
+                    <article style={styles.article}>
+                        {movie.Poster.startsWith('https://') ? (
+                            <div className="movieImage">
+                                <Image
+                                    alt={movie.Title}
+                                    src={movie.Poster}
+                                    width={300}
+                                    height={448}
+                                    placeholder="blur"
+                                    blurDataURL={blurDataUrl}
+                                />
+                            </div>
+                        ) : (
+                            <Image alt="Placeholder" src={blurDataUrl} width={300} height={448} />
+                        )}
+                        <h3 style={styles.title}>
+                            {movie.Title} ({movie.Year})
+                        </h3>
+                        <BodyChunk />
+                    </article>
+                </Link>
             ))}
         </section>
     )

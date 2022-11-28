@@ -29,3 +29,18 @@ h1,
 h2 {
     margin-left: 20px
 }
+
+.movieImage {
+    transition: transform .3s ease-out;
+    overflow: hidden;
+    width: 300px;
+    height: 448px;
+}
+
+.movieImage > img{
+    transition: transform .3s ease-out;
+}
+
+.movieImage:hover > img{
+    transform: scale(1.15, 1.15);
+}
