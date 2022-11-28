@@ -26,14 +26,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MovieRead | { m
         searchParams.append(param.name, value)
     })
 
-    if (!searchParams.get('i')) {
-        res.status(400).json({
-            message: 'Movie ID is required'
-        })
-
-        return
-    }
-
     const response = await fetch(`https://www.omdbapi.com/?${searchParams.toString()}`, {
         headers: {
             Accept: 'application/json',
@@ -52,8 +44,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MovieRead | { m
     const resultOrError = await response.json()
 
     if (resultOrError.Response === 'False') {
-        res.status(400).json({
-            message: resultOrError.Error || `Failed`
+        res.status(404).json({
+            message: 'Not found'
         })
 
         return
