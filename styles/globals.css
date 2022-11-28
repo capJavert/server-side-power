@@ -40,6 +40,7 @@ h2 {
 
 .movieImage>img {
     transition: transform .3s ease-out;
+    object-fit: cover;
 }
 
 .movieImage:hover>img {
