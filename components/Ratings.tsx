@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react'
 
 import { MovieRead, PickRename } from '../types'
+import RateButton from './RateButton'
 
 const styles: Record<string, CSSProperties> = {
     container: {
@@ -19,6 +20,7 @@ const Ratings = ({ ratings }: Pick<PickRename<MovieRead, { Ratings: 'ratings' }>
                 <article key={rating.Source}>
                     <h3>{rating.Source}</h3>
                     <p>⭐ {rating.Value}</p>
+                    <RateButton />
                 </article>
             ))}
         </div>
