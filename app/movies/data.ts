@@ -37,6 +37,10 @@ export const getMovies = async (params: {
     const resultOrError = await response.json()
 
     if (!response.ok) {
+        if (resultOrError.message === 'Movie not found!') {
+            return { data: [] }
+        }
+
         throw new Error(resultOrError.message || `HTTP Error ${response.status}`)
     }
 
