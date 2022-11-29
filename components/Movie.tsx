@@ -17,6 +17,9 @@ const styles: Record<string, CSSProperties> = {
     },
     list: {
         paddingLeft: '20px'
+    },
+    image: {
+        objectFit: 'cover'
     }
 }
 
@@ -26,6 +29,7 @@ const Movie = ({ item: movie }: { item: MovieRead }) => {
             <aside style={styles.aside}>
                 {movie.Poster.startsWith('https://') ? (
                     <Image
+                        style={styles.image}
                         alt={movie.Title}
                         src={movie.Poster}
                         width={300}
