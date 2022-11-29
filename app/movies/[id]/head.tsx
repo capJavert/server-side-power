@@ -3,12 +3,12 @@ import { getMovie } from '../data'
 
 const Head = async ({ params }: { params: { id: string } }) => {
     const { id } = params
-    const { data: movie } = await getMovie({ id })
+    const { data: movie } = await getMovie({ id }).catch(() => ({ data: undefined }))
 
     return (
         <>
             <DefaultHead />
-            <title>{`🚀 ${movie.Title}`}</title>
+            <title>{`🚀 ${movie?.Title || 'Server power'}`}</title>
         </>
     )
 }
