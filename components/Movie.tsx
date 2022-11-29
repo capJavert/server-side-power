@@ -20,12 +20,15 @@ const styles: Record<string, CSSProperties> = {
     },
     image: {
         objectFit: 'cover'
+    },
+    content: {
+        margin: '0 20px 20px 20px'
     }
 }
 
 const Movie = ({ item: movie }: { item: MovieRead }) => {
     return (
-        <main style={styles.main}>
+        <main style={styles.main} className="movie movieSingle">
             <aside style={styles.aside}>
                 {movie.Poster.startsWith('https://') ? (
                     <Image

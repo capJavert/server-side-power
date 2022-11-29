@@ -46,3 +46,9 @@ h2 {
 .movieImage:hover>img {
     transform: scale(1.15, 1.15);
 }
+
+@media (max-width: 600px) {
+    .movieSingle {
+        flex-direction: column !important;
+    }
+  }
