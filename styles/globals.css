@@ -51,4 +51,19 @@ h2 {
     .movieSingle {
         flex-direction: column !important;
     }
-  }
+
+    .movieSingle aside {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ratingsContainer {
+        flex-direction: column !important;
+    }
+}
+
+@media (max-width: 679px) {
+    .moviesSection {
+        justify-content: center;
+    }
+}

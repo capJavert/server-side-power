@@ -15,7 +15,7 @@ const styles: Record<string, CSSProperties> = {
 
 const Ratings = ({ ratings }: Pick<PickRename<MovieRead, { Ratings: 'ratings' }>, 'ratings'>) => {
     return (
-        <div style={styles.container}>
+        <div style={styles.container} className="ratings ratingsContainer">
             {ratings.map(rating => (
                 <article key={rating.Source}>
                     <h3>{rating.Source}</h3>

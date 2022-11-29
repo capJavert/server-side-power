@@ -28,7 +28,7 @@ const Movies = ({ items }: { items: MovieList[] }) => {
     const pathname = usePathname()
 
     return (
-        <section style={styles.container}>
+        <section style={styles.container} className="movies moviesSection">
             {items.map(movie => (
                 <Link key={movie.imdbID} href={`${pathname?.startsWith('/v12') ? '/v12' : ''}/movies/${movie.imdbID}`}>
                     <article style={styles.article}>
