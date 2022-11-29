@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { CSSProperties } from 'react'
 
 import { MovieList } from '../types'
@@ -24,10 +25,12 @@ const styles: Record<string, CSSProperties> = {
 }
 
 const Movies = ({ items }: { items: MovieList[] }) => {
+    const pathname = usePathname()
+
     return (
         <section style={styles.container}>
             {items.map(movie => (
-                <Link key={movie.imdbID} href={`/movies/${movie.imdbID}`}>
+                <Link key={movie.imdbID} href={`${pathname?.startsWith('/v12') ? '/v12' : ''}/movies/${movie.imdbID}`}>
                     <article style={styles.article}>
                         {movie.Poster.startsWith('https://') ? (
                             <div className="movieImage">
