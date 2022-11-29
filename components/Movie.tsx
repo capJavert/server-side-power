@@ -3,6 +3,7 @@ import { CSSProperties } from 'react'
 
 import { MovieRead } from '../types'
 import { blurDataUrl } from '../utils'
+import BodyChunk from './BodyChunk'
 
 const styles: Record<string, CSSProperties> = {
     main: {
@@ -67,6 +68,7 @@ const Movie = ({ item: movie }: { item: MovieRead }) => {
                     <p>{movie.Awards}</p>
                 </article>
             </div>
+            <BodyChunk />
         </main>
     )
 }
