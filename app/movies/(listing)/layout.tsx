@@ -1,6 +1,6 @@
 import Search from '../../../components/Search'
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <h1>Movies</h1>
@@ -10,4 +10,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default RootLayout
+export default Layout
