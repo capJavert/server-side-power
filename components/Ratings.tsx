@@ -20,7 +20,7 @@ const Ratings = ({ ratings }: Pick<PickRename<MovieRead, { Ratings: 'ratings' }>
                 <article key={rating.Source}>
                     <h3>{rating.Source}</h3>
                     <p>⭐ {rating.Value}</p>
-                    <RateButton />
+                    <RateButton disabled={!rating.Value || rating.Value === 'N/A'} />
                 </article>
             ))}
         </div>

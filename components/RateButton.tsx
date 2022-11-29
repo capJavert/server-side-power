@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const RateButton = () => {
+const RateButton = ({ disabled = false }: { disabled?: boolean }) => {
     const [liked, setLiked] = useState(false)
 
     return (
@@ -22,6 +22,7 @@ const RateButton = () => {
             onClick={() => {
                 setLiked(current => !current)
             }}
+            disabled={disabled}
         >
             {liked ? 'Dislike 👎' : 'Like 👍'}
         </button>
