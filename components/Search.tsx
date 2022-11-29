@@ -21,7 +21,7 @@ const styles: Record<string, CSSProperties> = {
     }
 }
 
-const Search = () => {
+const Search = ({ appMode = false }: { appMode?: boolean }) => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const [value, setValue] = useState(() => searchParams.get('q') || '')
@@ -30,7 +30,11 @@ const Search = () => {
         const url = new URL(window.location.href)
         url.searchParams.set('q', value)
 
-        router.push(url.toString())
+        if (appMode) {
+            window.location.href = url.toString()
+        } else {
+            router.push(`${url.pathname}?${url.searchParams.toString()}`)
+        }
     }
 
     return (
@@ -39,6 +43,10 @@ const Search = () => {
             onSubmit={onSubmit}
             onKeyDown={event => {
                 if (event.key !== 'Enter') {
+                    return
+                }
+
+                if (!value) {
                     return
                 }
 
@@ -51,6 +59,7 @@ const Search = () => {
                 style={styles.input}
                 type="text"
                 value={value}
+                required
                 onChange={event => {
                     setValue(event.target.value || '')
                 }}
