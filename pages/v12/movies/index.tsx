@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next'
 
 import { getMovies } from '../../../app/movies/data'
 import Movies from '../../../components/Movies'
+import Search from '../../../components/Search'
 import { MovieList } from '../../../types'
 import { globalDelayMs } from '../../../utils'
 
@@ -11,6 +12,7 @@ const Page = ({ movies, avengerMovies, fastMovies }: Props) => {
     return (
         <>
             <h1>Movies</h1>
+            <Search />
 
             <Movies items={movies} />
 
